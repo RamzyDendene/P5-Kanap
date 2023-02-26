@@ -219,7 +219,7 @@ let btnFormulaire = document.querySelector('.cart__order__form__submit')
 
 btnFormulaire.addEventListener('click', event => {
 
-    //event.preventDefault()
+    event.preventDefault()
 
     let contact = {
         firstName: document.querySelector('#firstName').value,
@@ -276,37 +276,6 @@ btnFormulaire.addEventListener('click', event => {
 
 
 
-    // function ControleValiditeAdresse() {
-
-    //     if (/^[a-zA-Z0-9\s,'-]*$/.test(controleAdresse)) {
-
-    //         console.log('C\'est ok')
-    //         return true
-
-    //     } else {
-    //         document.querySelector('#addressErrorMsg').textContent = 'Veuillez corriger l\'adresse'
-    //         console.log('Veuillez corriger l\'adresse')
-    //         return false
-    //     }
-
-    // }
-
-    // function ControleValiditeVille() {
-
-    //     if (/^[a-zA-Z\ '-]+$/.test(controleVille)) {
-
-
-    //         console.log('C\'est ok')
-    //         return true
-
-    //     } else {
-    //         document.querySelector('#cityErrorMsg').textContent = 'Veuillez corriger la ville'
-    //         console.log('Veuillez corriger la ville')
-    //         return false
-    //     }
-
-    // }
-
 
 
     function ControleValiditeEmail() {
@@ -327,8 +296,10 @@ btnFormulaire.addEventListener('click', event => {
     if (ControleValiditePrenom() && ControleValiditeNom() && ControleValiditeEmail()) {
         localStorage.setItem('contact', JSON.stringify(contact))
 
-    } else {
 
+    } else {
+        return 
+        //event.preventDefault()
     }
 
     //localStorage.setItem('contact', JSON.stringify(contact))
@@ -351,7 +322,7 @@ btnFormulaire.addEventListener('click', event => {
         headers: {
             'Content-Type': 'application/json',
         }
-
+    
     }).then(res => {
         console.log(res)
         return res.json()
@@ -362,7 +333,4 @@ btnFormulaire.addEventListener('click', event => {
     })
 
 
-
 })
-
-
